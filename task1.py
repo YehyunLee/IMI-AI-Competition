@@ -1,5 +1,6 @@
 # developed by Yehyun Lee
 # @ copyright 2025 Yehyun Lee
+# i included some Q&A to explain the code
 
 import pandas as pd
 import numpy as np

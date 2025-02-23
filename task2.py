@@ -1,6 +1,8 @@
 # developed by Yehyun Lee
 # @ copyright 2025 Yehyun Lee
 # built on top of task1.py
+# i removed unnecessary comments and added new code to train an autoencoder for customer embeddings
+# again, i included some Q&A to explain the code
 
 import pandas as pd
 import numpy as np
@@ -101,6 +103,26 @@ customer_data['nearest_neighbors'] = list(indices)
 
 # save processed data & embeddings
 customer_data.to_csv('customer_embeddings.csv', index=False)
+
+# q. what is the purpose of training an autoencoder for customer embeddings?
+# a. training an autoencoder allows us to learn low-dimensional representations (embeddings) of customers that capture important patterns in the data.
+# these embeddings can be used for anomaly detection and finding similar customers based on their features.
+
+# q. what is autoencoder?
+# a. an autoencoder is a type of neural network that learns to
+# reconstruct its input data, typically by compressing the input into a
+# lower-dimensional representation (encoder) and then reconstructing the original 
+# input from the compressed representation (decoder).
+# in our case, we use following hyperparameters and settings:
+    # input_dim = features.shape[1]
+    # encoding_dim = 16  # embedding size
+    # input_layer = Input(shape=(input_dim,))
+    # encoded = Dense(encoding_dim, activation='relu')(input_layer)
+    # decoded = Dense(input_dim, activation='sigmoid')(encoded)
+    # autoencoder = keras.Model(input_layer, decoded)
+    # encoder = keras.Model(input_layer, encoded)
+    # autoencoder.compile(optimizer='adam', loss='mse')
+    # autoencoder.fit(features, features, epochs=50, batch_size=32, shuffle=True)
 
 
 # what the code does for task2.py:
